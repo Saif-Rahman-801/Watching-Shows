@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../hooks/useAuth/useAuth';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
   const { createUser, updateUserProfile, signInWithGoogle } = useAuth();
+  const navigate = useNavigate()
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -16,7 +18,8 @@ const SignUp = () => {
     try {
       // Create user with email and password
       const userCredential = await createUser(email, password);
-
+toast.success("Registration successful");
+navigate("/")
       // Update user profile with the provided name
       await updateUserProfile(userCredential.user, { displayName: name });
 
@@ -32,7 +35,8 @@ const SignUp = () => {
     try {
       // Sign in with Google
       await signInWithGoogle();
-
+      toast.success("Registration successful");
+      navigate("/")
       // You can optionally add additional logic or redirect the user
       console.log('User signed up with Google successfully');
     } catch (error) {

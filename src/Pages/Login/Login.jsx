@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import useAuth from '../../hooks/useAuth/useAuth';
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const { signInWithEmailAndPassword, signInWithGoogle } = useAuth();
-
+  const navigate = useNavigate()
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -15,7 +16,8 @@ const Login = () => {
     try {
       // Sign in with email and password
       await signInWithEmailAndPassword(email, password);
-
+      toast.success("login successful");
+      navigate("/")
       // You can optionally add additional logic or redirect the user
       console.log('User logged in successfully');
     } catch (error) {
@@ -28,7 +30,8 @@ const Login = () => {
     try {
       // Sign in with Google
       await signInWithGoogle();
-
+      toast.success("login successful");
+      navigate("/")
       // You can optionally add additional logic or redirect the user
       console.log('User logged in with Google successfully');
     } catch (error) {
