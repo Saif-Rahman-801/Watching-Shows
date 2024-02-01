@@ -4,6 +4,7 @@ import AllShows from "../Pages/Home/AllShows";
 import Summary from "../Pages/Summary/Summary";
 import SignUp from "../Pages/SignUp/SignUp";
 import Login from "../Pages/Login/Login";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/summary/:id",
-        element: <Summary />,
+        element: (
+          <PrivateRoute>
+            <Summary />,
+          </PrivateRoute>
+        ),
       },
       {
         path: "/signup",
