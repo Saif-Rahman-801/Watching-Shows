@@ -4,7 +4,7 @@ import useAuth from '../../hooks/useAuth/useAuth';
 import { toast } from 'react-toastify';
 
 const Login = () => {
-  const { signInWithEmailAndPassword, signInWithGoogle } = useAuth();
+  const { signIn, signInWithGoogle } = useAuth();
   const navigate = useNavigate()
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ const Login = () => {
 
     try {
       // Sign in with email and password
-      await signInWithEmailAndPassword(email, password);
+      await signIn(email, password);
       toast.success("login successful");
       navigate("/")
       // You can optionally add additional logic or redirect the user
