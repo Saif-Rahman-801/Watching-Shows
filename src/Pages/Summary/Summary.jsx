@@ -1,9 +1,12 @@
 import { useParams } from "react-router-dom";
 import useLoadData from "../../hooks/useLoadData/useLoadData";
 import { useState, useEffect } from "react";
+import useAuth from "../../hooks/useAuth/useAuth";
+import { toast } from "react-toastify";
 
 const Summary = () => {
   const { id } = useParams();
+  const {user} = useAuth()
   const shows = useLoadData();
   const [showDetails, setShowDetails] = useState(null);
   const [isBooking, setIsBooking] = useState(false);
@@ -21,6 +24,7 @@ const Summary = () => {
     setIsBooking(true);
     setBookingInfo({
       movieName: showDetails.name,
+      user: user.email
       // Set other relevant details for the form
     });
   };
@@ -31,6 +35,7 @@ const Summary = () => {
     const bookedTickets = JSON.parse(localStorage.getItem("bookedTickets")) || [];
     bookedTickets.push(bookingInfo);
     localStorage.setItem("bookedTickets", JSON.stringify(bookedTickets));
+    toast.success("Ticket booked successfully")
     setIsBooking(false);
   };
 
@@ -81,6 +86,7 @@ const Summary = () => {
             <button
               type="submit"
               className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 focus:outline-none focus:shadow-outline-green"
+              
             >
               Submit
             </button>

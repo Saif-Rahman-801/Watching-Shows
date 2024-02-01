@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import logoImg from '../../assets/shows.png'; 
 import useAuth from '../../hooks/useAuth/useAuth';
@@ -27,7 +26,6 @@ const Navbar = () => {
           <Link to="/" className="hover:underline">All Shows</Link>
           {user ? (
             <>
-              <Link to="/profile" className="hover:underline">Profile</Link>
               <button onClick={handleLogout} className="hover:underline">Logout</button>
             </>
           ) : (
