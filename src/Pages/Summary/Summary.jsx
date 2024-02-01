@@ -35,13 +35,13 @@ const Summary = () => {
   };
 
   return (
-    <div className=" container mx-auto mt-5 flex justify-between items-center">
+    <div className="container mx-auto my-5 flex flex-col lg:flex-row justify-between items-center gap-5">
       <div>
         {showDetails && (
           <img
             src={showDetails.image.original}
             alt={showDetails.name}
-            className="rounded-lg w-full"
+            className="rounded-lg w-full max-h-96 object-cover"
           />
         )}
       </div>
@@ -83,6 +83,15 @@ const Summary = () => {
               className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700 focus:outline-none focus:shadow-outline-green"
             >
               Submit
+            </button>
+            <button
+              type="submit"
+              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700 focus:outline-none focus:shadow-outline-black mx-3"
+              onClick={() => {
+                setIsBooking(!isBooking)
+              }}
+            >
+              Cancel
             </button>
           </form>
         )}
