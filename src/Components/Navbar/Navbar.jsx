@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import logoImg from '../../assets/shows.png'; 
 
-function Navbar({ isLoggedIn, userName }) {
+const Navbar = ({ isLoggedIn, userName }) => {
   return (
     <nav className="border-b-2 shadow-sm py-4">
       <div className="container mx-auto flex justify-around lg:justify-between items-center">

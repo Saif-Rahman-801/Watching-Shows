@@ -1,8 +1,9 @@
 import PropTypes from "prop-types"
+import { Link } from "react-router-dom";
 
-function Card({ data }) {
+const Card = ({ data }) => {
   const { show } = data;
-  const { image, name, genres, language } = show;
+  const { image, name, genres, language, id } = show;
 
   return (
     <div className="bg-white rounded-md overflow-hidden shadow-lg my-4">
@@ -11,7 +12,9 @@ function Card({ data }) {
         <h2 className="text-xl font-semibold">{name}</h2>
         <p className="text-gray-600 mb-2">Genres: {genres.join(', ')}</p>
         <p className="text-gray-600 mb-4">Language: {language}</p>
+        <Link to={`/summary/${id}`}>
         <button className="bg-primary text-black font-medium py-2 px-4 rounded-md hover:bg-primary-dark">Learn More</button>
+        </Link>
       </div>
     </div>
   );

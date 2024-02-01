@@ -1,26 +1,13 @@
-import { useEffect, useState } from "react";
-import useAxiosPublic from "../../hooks/axiosHooks/useAxiosPublic";
 import Card from "../../Components/Card/Card";
+import useLoadData from "../../hooks/useLoadData/useLoadData";
 
 const AllShows = () => {
-  const [shows, setShows] = useState([]);
-  const axiosPublic = useAxiosPublic();
-
-  useEffect(() => {
-    axiosPublic
-      .get("/")
-      .then((response) => {
-        setShows(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, [axiosPublic]);
+  const shows = useLoadData();
 
   return (
     <div className="container mx-auto grid grid-cols-3 gap-5">
       {shows.map((data) => (
-        <Card key={data.show.id} data={data}/>
+        <Card key={data.show.id} data={data} />
       ))}
     </div>
   );
