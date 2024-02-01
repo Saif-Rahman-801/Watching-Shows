@@ -13,7 +13,7 @@ const Card = ({ data }) => {
         <p className="text-gray-600 mb-2">Genres: {genres.join(', ')}</p>
         <p className="text-gray-600 mb-4">Language: {language}</p>
         <Link to={`/summary/${id}`}>
-        <button className="bg-primary text-black font-medium py-2 px-4 rounded-md hover:bg-primary-dark">Learn More</button>
+        <button className="bg-primary text-black font-medium py-2 px-4 rounded-md hover:bg-primary-dark">Know More</button>
         </Link>
       </div>
     </div>
